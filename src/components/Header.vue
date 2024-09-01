@@ -49,7 +49,7 @@ const changeLogo = computed(() => {
           @mouseover="handleMouseBehavior(true)"
           @mouseleave="handleMouseBehavior(false)" 
           class="w-8"
-          :src="`/src/assets/images/logos&me/si-high-resolution-logo-${changeLogo}-transparent-2.svg`" 
+          :src="`/si-high-resolution-logo-${changeLogo}-transparent-2.svg`" 
           alt="logo"
         >
         <nav class="flex">

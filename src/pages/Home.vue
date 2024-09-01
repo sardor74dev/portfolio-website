@@ -60,7 +60,7 @@ const contacts = reactive([
 <template>
   <div class="text-center">
     <section id="home" class="flex flex-col items-center pt-36">
-      <img class="w-96 mt-4" src="/src/assets/images/logos&me/1 (2).jpg" alt="my photo">
+      <img class="w-96 mt-4" src="/1 (2).jpg" alt="my photo">
       <h1 class="text-4xl font-bold mt-6">Hi, my name is Sardor</h1>
       <p class="text-xl my-2">I'm a Frontend Developer</p>
       <button class="btn-11 bg-gray-800 text-white font-bold py-2 px-4 rounded hover:bg-gray-700 active:scale-95 transition-transform duration-150 ease-in-out">
@@ -82,7 +82,7 @@ const contacts = reactive([
           v-for="project in projects"
           :key="project.title"
         >
-          <img :src="`/src/assets/images/projects/${project.fileName}.png`" class="rounded-t-lg">
+          <img :src="`/${project.fileName}.png`" class="rounded-t-lg">
           <div class="py-4 text-left">
             <a :href="`${project.link}`">
               <h2 class="text-xl font-semibold">{{ project.title }}</h2>
