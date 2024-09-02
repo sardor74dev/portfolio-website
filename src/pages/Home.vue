@@ -21,7 +21,7 @@ const projects = reactive([
   { 
     title: 'Taste Eat', 
     fileName: 'tasteeat', 
-    link: 'https://go-corona-health-care.netlify.app/', 
+    link: 'https://taste-eat-drab.vercel.app/', 
     techStack: ['HTML5', 'CSS3', 'JS'] 
   },
   { 
@@ -45,7 +45,7 @@ const projects = reactive([
   { 
     title: 'Nuxt Dojo', 
     fileName: 'nuxtdojo', 
-    link: 'https://go-corona-health-care.netlify.app/', 
+    link: 'https://nuxt-dojo-three.vercel.app/products', 
     techStack: ['Vue 3', 'Vue Router', 'Pinia'] 
   },
 ])
@@ -65,7 +65,7 @@ const contacts = reactive([
       <p class="text-xl my-2">I'm a Frontend Developer</p>
       <button class="btn-11 bg-gray-800 text-white font-bold py-2 px-4 rounded hover:bg-gray-700 active:scale-95 transition-transform duration-150 ease-in-out">
       <a 
-        href="/public/Ибрагимов_Сардор_резюме.pdf"
+        href="/Ибрагимов_Сардор_резюме.pdf"
         download="Sardor_CV.pdf"  
       >
           <span>
