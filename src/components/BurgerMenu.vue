@@ -22,17 +22,17 @@ defineProps({
     >
         <ul class="sm:hidden text-left">
             <li v-for="item in menuItems" :key="item" class="my-8">
-                <a
+                <router-link
                     @click="toggleMenu"
-                    :href="`#${item.toLowerCase()}`"
-                    class="px-4 py-2 rounded-md hover:text-sky-500 font-semibold font-sans text-sm leading-6"
+                    :to="`/#${item.toLowerCase()}`"
+                    class="px-4 py-2 rounded-md text-gray-300 hover:text-sky-500 font-semibold font-sans text-sm leading-6"
                 >
                     {{ item }}
-                </a>
+                </router-link>
             </li>
         </ul>
         <button @click="toggleMenu" class="w-6 h-6">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 top-5 right-5 stroke-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 top-5 right-5 stroke-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
             </svg>
         </button>

@@ -45,22 +45,24 @@ const changeLogo = computed(() => {
 <template>
   <header :class="headerClass" class="fixed top-0 left-0 z-50 w-full text-gray-200 py-6 shadow-md transition duration-500">
       <div class="container max-w-7xl mx-auto px-10 flex justify-between text-center">
-        <img
-          @mouseover="handleMouseBehavior(true)"
-          @mouseleave="handleMouseBehavior(false)" 
-          class="w-8"
-          :src="`/si-high-resolution-logo-${changeLogo}-transparent-2.svg`" 
-          alt="logo"
-        >
+        <router-link to="/">
+          <img
+            @mouseover="handleMouseBehavior(true)"
+            @mouseleave="handleMouseBehavior(false)" 
+            class="w-8"
+            :src="`/si-high-resolution-logo-${changeLogo}-transparent-2.svg`" 
+            alt="logo"
+          >
+        </router-link>
         <nav class="flex">
           <ul class="sm:flex hidden gap-1 lg:gap-4 md:gap-2">
             <li v-for="item in menuItems" :key="item" class="m-auto">
-              <a
-                :href="`#${item.toLowerCase()}`"
+              <router-link
+                :to="`/#${item.toLowerCase()}`"
                 class="px-4 py-2 rounded-md hover:text-sky-500 font-semibold font-sans text-sm leading-6"
               >
                 {{ item }}
-              </a>
+              </router-link>
             </li>
           </ul>
         </nav>
