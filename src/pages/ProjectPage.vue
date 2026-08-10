@@ -1,15 +1,21 @@
-<script setup>
-import { computed } from 'vue'
-import { useRoute } from 'vue-router'
+<script>
 import { useMainStore } from '../stores/MainStore'
 import Carousel from '../components/Carousel.vue'
 
-const route = useRoute()
-const mainStore = useMainStore()
-
-const projectInfo = computed(() => {
-    return mainStore.projects[route.params.id-1]
-})
+export default {
+    name: 'ProjectPage',
+    components: {
+        Carousel
+    },
+    computed: {
+        mainStore() {
+            return useMainStore()
+        },
+        projectInfo() {
+            return this.mainStore.projects[this.$route.params.id - 1]
+        }
+    }
+}
 </script>
 
 <template>

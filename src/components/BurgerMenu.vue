@@ -1,18 +1,21 @@
-<script setup>
-defineProps({
-    isMenuOpened: {
-        type: Boolean,
-        required: true
-    },
-    toggleMenu: {
-        type: Function,
-        required: true
-    },
-    menuItems: {
-        type: Array,
-        required: true
-    },
-})
+<script>
+export default {
+    name: "BurgerMenu",
+    props: {
+        isMenuOpened: {
+            type: Boolean,
+            required: true
+        },
+        toggleMenu: {
+            type: Function,
+            required: true
+        },
+        menuItems: {
+            type: Array,
+            required: true
+        }
+    }
+}
 </script>
 
 <template>

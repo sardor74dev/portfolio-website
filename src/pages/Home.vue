@@ -1,24 +1,32 @@
-<script setup>
-import { reactive } from "vue";
+<script>
 import { useMainStore } from "../stores/MainStore"
 
-const mainStore = useMainStore()
-
-const techStackIcons = reactive([
-  { name: "HTML5", slug: "html5", color: "#E34F26" },
-  { name: "CSS3", slug: "css3", color: "#1572B6" },
-  { name: "JavaScript", slug: "javascript", color: "#F7DF1E" },
-  { name: "TailwindCSS", slug: "tailwindcss", color: "#06B6D4" },
-  { name: "Vue.js", slug: "vuedotjs", color: "#4FC08D" },
-  { name: "Git", slug: "git", color: "#F05032" },
-  { name: "GitHub", slug: "github", color: "#F05032" },
-])
-
-const contacts = reactive([
-  { title: 'Location', link_or_info: 'Fergana, Uzbekistan' },
-  { title: 'Telegram / Whatsapp', link_or_info: '+998 (91) 040-14-85' },
-  { title: 'Email', link_or_info: 'sardor777ibragimov@gmail.com' }
-])
+export default {
+  name: "Home",
+  data() {
+    return {
+      techStackIcons: [
+        { name: "HTML5", slug: "html5", color: "#E34F26" },
+        { name: "CSS3", slug: "css", color: "#663399" },
+        { name: "JavaScript", slug: "javascript", color: "#F7DF1E" },
+        { name: "TailwindCSS", slug: "tailwindcss", color: "#06B6D4" },
+        { name: "Vue.js", slug: "vuedotjs", color: "#4FC08D" },
+        { name: "Git", slug: "git", color: "#F05032" },
+        { name: "GitHub", slug: "github", color: "#F05032" },
+      ],
+      contacts: [
+        { title: 'Location', link_or_info: 'Fergana, Uzbekistan' },
+        { title: 'Telegram / Whatsapp', link_or_info: '+998 (91) 040-14-85' },
+        { title: 'Email', link_or_info: 'sardor777ibragimov@gmail.com' }
+      ]
+    }
+  },
+  computed: {
+    mainStore() {
+      return useMainStore()
+    }
+  }
+}
 </script>
 
 <template>

@@ -1,45 +1,50 @@
-<script setup>
+<script>
 import BurgerMenu from "./BurgerMenu.vue";
 import { onMounted, onBeforeUnmount, computed, ref } from "vue";
 
-// header blurring
-const scrolled = ref(false)
-const blurBackground = () => {
-  return 'bg-[#0F172A] bg-opacity-40 backdrop-blur-lg'
+export default {
+  name: "Header",
+  components: {
+    BurgerMenu
+  },
+  data() {
+    return {
+      menuItems: ['Home', 'Projects', 'Skills', 'Contacts'],
+      isMenuOpened: false,
+      isHovered: false,
+      scrolled: false
+    }
+  },
+  mounted() {
+    window.addEventListener('scroll', this.handleScroll)
+  },
+  onBeforeUnmount() {
+    window.removeEventListener('scroll', this.handleScroll)
+  },
+  computed: {
+    headerClass() {
+      return this.scrolled ? this.blurBackground() : 'bg-transparent'
+    },
+    changeLogo() {
+      return this.isHovered ? 'sky-500' : 'white'
+    }
+  },
+  methods: {
+    toggleMenu() {
+      this.isMenuOpened = !this.isMenuOpened
+    },
+    handleMouseBehavior(condition) {
+      this.isHovered = condition
+    },
+    handleScroll() {
+      this.scrolled = window.scrollY > 0
+      console.log('Scroll Y:', window.scrollY)
+    },
+    blurBackground() {
+      return 'bg-[#0F172A] bg-opacity-40 backdrop-blur-lg'
+    }
+  }
 }
-
-const headerClass = computed(() => {
-  return scrolled.value ? blurBackground() : 'bg-transparent'
-})
-
-const handleScroll = () => {
-  scrolled.value = window.scrollY > 0
-  console.log('Scroll Y:', window.scrollY)
-}
-
-onMounted(() => window.addEventListener('scroll', handleScroll))
-onBeforeUnmount(() => window.removeEventListener('scroll', handleScroll))
-
-// header menu & burger menu
-const menuItems = ref(['Home', 'Projects', 'Skills', 'Contacts'])
-
-const isMenuOpened = ref(false),
-toggleMenu = () => {
-  isMenuOpened.value = !isMenuOpened.value
-}
-
-// logo
-const isHovered = ref(false)
-
-const handleMouseBehavior = (condition) => {
-  condition ? isHovered.value = true : isHovered.value = false
-}
-
-const changeLogo = computed(() => {
-  const res =  isHovered.value ? 'sky-500' : 'white'
-  console.log(res)
-  return res
-})  
 </script>
 
 <template>

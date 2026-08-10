@@ -1,27 +1,38 @@
-<script setup>
-import { computed, ref } from 'vue';
-import { useRoute } from 'vue-router'
+<script>
 import { useMainStore } from '../stores/MainStore';
 import { IconChevronRight } from '@tabler/icons-vue';
 import { IconChevronLeft } from '@tabler/icons-vue';
 
-const mainStore = useMainStore()
-const route = useRoute()
-
-const activeIndex = ref(0)
-
-const projectImages = computed(() => {
-    return mainStore.projects[route.params.id-1].fileName
-})
-
-const nextSlide = () => {
-    activeIndex.value = (activeIndex.value + 1) % projectImages.value.length
-}
-const prevSlide = () => {
-    activeIndex.value = (activeIndex.value - 1 + projectImages.value.length) % projectImages.value.length
-}
-const goToSlide = (index) => {
-    activeIndex.value = index
+export default {
+    name: "Carousel",
+    components: {
+        IconChevronRight,
+        IconChevronLeft
+    },
+    data() {
+        return {
+            activeIndex: 0
+        }
+    },
+    computed: {
+        mainStore() {
+            return useMainStore()
+        },
+        projectImages() {
+            return this.mainStore.projects[this.$route.params.id - 1].fileName
+        }
+    },
+    methods: {
+        nextSlide() {
+            this.activeIndex = (this.activeIndex + 1) % this.projectImages.length
+        },
+        prevSlide() {
+            this.activeIndex = (this.activeIndex - 1 + this.projectImages.length) % this.projectImages.length
+        },
+        goToSlide(index) {
+            this.activeIndex = index
+        }
+    }
 }
 </script>
 
