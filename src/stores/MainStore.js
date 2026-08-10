@@ -4,9 +4,6 @@ import axios from "axios";
 
 export const useMainStore = defineStore("MainStore", () => {
 
-    const API_KEY = import.meta.env.VITE_API_KEY;
-    const API_HOST = import.meta.env.VITE_API_HOST;
-
     const projects = reactive([])
     const techStackIcons = reactive([])
     const contacts = reactive([])
@@ -14,7 +11,7 @@ export const useMainStore = defineStore("MainStore", () => {
 
     const fetchProjects = async () => {
         try {
-            const response = await axios.get(`https://${API_KEY}.${API_HOST}/projects`);
+            const response = await axios.get(`https://9837b02b6a10eb76.mokky.dev/projects`);
             projects.push(...response.data);
         } catch (error) {
             console.error("Error fetching projects:", error);
@@ -23,7 +20,7 @@ export const useMainStore = defineStore("MainStore", () => {
 
     const fetchTechStackIcons = async () => {
         try {
-            const response = await axios.get(`https://${API_KEY}.${API_HOST}/tech-stack-icons`);
+            const response = await axios.get(`https://9837b02b6a10eb76.mokky.dev/tech-stack-icons`);
             techStackIcons.push(...response.data);
         } catch (error) {
             console.error("Error fetching tech stack icons:", error);
@@ -32,7 +29,7 @@ export const useMainStore = defineStore("MainStore", () => {
 
     const fetchContacts = async () => {
         try {
-            const response = await axios.get(`https://${API_KEY}.${API_HOST}/contacts`);
+            const response = await axios.get(`https://9837b02b6a10eb76.mokky.dev/contacts`);
             contacts.push(...response.data);
         } catch (error) {
             console.error("Error fetching contacts:", error);
@@ -41,7 +38,7 @@ export const useMainStore = defineStore("MainStore", () => {
 
     const fetchSocialMediaIcons = async () => {
         try {
-            const response = await axios.get(`https://${API_KEY}.${API_HOST}/social-media-icons`);
+            const response = await axios.get(`https://9837b02b6a10eb76.mokky.dev/social-media-icons`);
             socialMediaIcons.push(...response.data);
         } catch (error) {
             console.error("Error fetching social media icons:", error);
