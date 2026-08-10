@@ -1,16 +1,15 @@
 <script>
+import { useMainStore } from "../stores/MainStore";
+
 export default {
   name: "Footer",
-  data() {
-    return {
-      socialMediaIcons: [
-        { name: "Telegram", slug: "telegram", link: "https://t.me/Ibragimov_410", color: "#E34F26" },
-        { name: "X", slug: "x", link: "https://t.me/Ibragimov_410", color: "#1572B6" },
-        { name: "LinkedIn", slug: "linkedin", link: "https://t.me/Ibragimov_410", color: "#F7DF1E" },
-        { name: "GitHub", slug: "github", link: "https://github.com/sardor74dev", color: "#06B6D4" },
-        { name: "Gmail", slug: "gmail", link: "mailto:sardor777ibragimov@gmail.com", color: "#4FC08D" }
-      ]
+  computed: {
+    mainStore() {
+      return useMainStore();
     }
+  },
+  mounted() {
+    this.mainStore.fetchSocialMediaIcons();
   }
 }
 </script>
@@ -21,7 +20,7 @@ export default {
         <section class="text-center">
           <ul class="flex items-center justify-center lg:gap-8 md:gap-6 sm:gap-4 gap-2">
             <li
-              v-for="icon in socialMediaIcons" 
+              v-for="icon in mainStore.socialMediaIcons" 
               :key="icon"
               class="relative group flex flex-col gap-5 items-center bg-gray-800"
             >

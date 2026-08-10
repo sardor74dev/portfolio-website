@@ -3,28 +3,15 @@ import { useMainStore } from "../stores/MainStore"
 
 export default {
   name: "Home",
-  data() {
-    return {
-      techStackIcons: [
-        { name: "HTML5", slug: "html5", color: "#E34F26" },
-        { name: "CSS3", slug: "css", color: "#663399" },
-        { name: "JavaScript", slug: "javascript", color: "#F7DF1E" },
-        { name: "TailwindCSS", slug: "tailwindcss", color: "#06B6D4" },
-        { name: "Vue.js", slug: "vuedotjs", color: "#4FC08D" },
-        { name: "Git", slug: "git", color: "#F05032" },
-        { name: "GitHub", slug: "github", color: "#F05032" },
-      ],
-      contacts: [
-        { title: 'Location', link_or_info: 'Fergana, Uzbekistan' },
-        { title: 'Telegram / Whatsapp', link_or_info: '+998 (91) 040-14-85' },
-        { title: 'Email', link_or_info: 'sardor777ibragimov@gmail.com' }
-      ]
-    }
-  },
   computed: {
     mainStore() {
       return useMainStore()
     }
+  },
+  mounted() {
+    this.mainStore.fetchProjects()
+    this.mainStore.fetchTechStackIcons()
+    this.mainStore.fetchContacts()
   }
 }
 </script>
@@ -74,7 +61,7 @@ export default {
       <h2 class="title">Skills</h2>
       <ul class="grid grid-cols-1 min-[425px]:grid-cols-2 lg:grid-cols-4 md:grid-cols-3">
         <li
-          v-for="icon in techStackIcons"
+          v-for="icon in mainStore.techStackIcons"
           :key="icon" 
           class="relative group m-1 max-[400px]:m-2 p-4  flex flex-col items-center bg-gray-800 hover:bg-slate-100"
         >
@@ -93,7 +80,7 @@ export default {
       <h2 class="title">Contact me</h2>
       <ul class="flex flex-col items-center justify-center mt-12 lg:gap-10 md:gap-8 sm:gap-6 gap-4">
         <li
-          v-for="contact in contacts" 
+          v-for="contact in mainStore.contacts" 
           :key="contact"
           class="relative group flex flex-col gap-4 justify-center"
         >
