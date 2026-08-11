@@ -38,7 +38,7 @@ export default {
     },
     handleScroll() {
       this.scrolled = window.scrollY > 0
-      console.log('Scroll Y:', window.scrollY)
+      // console.log('Scroll Y:', window.scrollY)
     },
     blurBackground() {
       return 'bg-[#0F172A] bg-opacity-40 backdrop-blur-lg'

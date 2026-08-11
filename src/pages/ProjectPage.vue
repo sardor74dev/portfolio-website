@@ -12,14 +12,19 @@ export default {
             return useMainStore()
         },
         projectInfo() {
-            return this.mainStore.projects[this.$route.params.id - 1]
+            return this.mainStore.projects[this.$route.params.id - 1] || null
+        }
+    },
+    mounted() {
+        if (!this.mainStore.projects.length) {
+            this.mainStore.fetchProjects()
         }
     }
 }
 </script>
 
 <template>
-    <div class="flex min-[900px]:flex-row flex-col gap-5 min-[425px]:p-5 p-4 bg-gray-800 bg-opacity-80 min-[425px]:rounded-[1.5rem] rounded-[1.5rem] shadow-lg mt-36 w-full">
+    <div v-if="projectInfo" class="flex min-[900px]:flex-row flex-col gap-5 min-[425px]:p-5 p-4 bg-gray-800 bg-opacity-80 min-[425px]:rounded-[1.5rem] rounded-[1.5rem] shadow-lg mt-36 w-full">
         <Carousel />
         <div class="flex flex-col">
             <div class="flex flex-col">
@@ -30,7 +35,7 @@ export default {
             <div class="flex flex-col">
                 <div class="flex flex-wrap mt-4">
                     <span 
-                        v-for="tech in mainStore.projects[$route.params.id-1].techStack"
+                        v-for="tech in projectInfo.techStack"
                         :key="tech"
                         class="badge"
                     >
