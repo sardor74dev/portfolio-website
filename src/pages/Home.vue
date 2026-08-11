@@ -9,9 +9,15 @@ export default {
     }
   },
   mounted() {
-    this.mainStore.fetchProjects()
-    this.mainStore.fetchTechStackIcons()
-    this.mainStore.fetchContacts()
+    if (!this.mainStore.projects.length) {
+      this.mainStore.fetchProjects()
+    }
+    if (!this.mainStore.techStackIcons.length) {
+      this.mainStore.fetchTechStackIcons()
+    }
+    if (!this.mainStore.contacts.length) {
+      this.mainStore.fetchContacts()
+    }
   }
 }
 </script>
@@ -36,9 +42,9 @@ export default {
         <li
           class="lg:m-4 sm:m-2 m-1 p-4 bg-gray-800 bg-opacity-80 rounded-[1.25rem] shadow-lg hover:shadow-xl hover:scale-105 transition-transform duration-200 ease-in-out"
           v-for="project in mainStore.projects"
-          :key="project.title"
+          :key="project.id"
         >
-          <img :src="`/${project.fileName[0]}.png`" class="rounded-t-lg">
+          <img :src="`/${project.fileName[0]}`" class="rounded-t-lg">
           <div class="py-4 text-left">
             <router-link :to="`/project/${project.id}`">
               <h2 class="text-xl font-semibold">{{ project.title }}</h2>

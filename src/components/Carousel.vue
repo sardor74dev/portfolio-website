@@ -48,7 +48,7 @@ export default {
                 :key="index"
                 class="min-w-full"
             >
-                <img :src="`/${image}.png`" alt="" class="w-full object-cover rounded-lg" />
+                <img :src="`/${image}`" alt="" class="w-full object-cover rounded-lg" />
             </div>
         </div>
 
@@ -75,7 +75,7 @@ export default {
                 @click.prevent="goToSlide(index)"
                 class="text-blue-500 hover:underline"
             >
-                <img :src="`/${image}.png`" class="w-fit rounded-lg">
+                <img :src="`/${image}`" class="w-fit rounded-lg">
             </a>
         </div>
         <div class="absolute bottom-0 left-1/2 flex md:hidden transform -translate-x-1/2 space-x-2 sm:p-4 min-[425px]:p-3 min-[375px]:p-2 p-1">

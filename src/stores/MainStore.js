@@ -12,7 +12,7 @@ export const useMainStore = defineStore("MainStore", () => {
     const fetchProjects = async () => {
         try {
             const response = await axios.get(`https://9837b02b6a10eb76.mokky.dev/projects`);
-            projects.push(...response.data);
+            projects.splice(0, projects.length, ...response.data);
         } catch (error) {
             console.error("Error fetching projects:", error);
         }
@@ -21,7 +21,7 @@ export const useMainStore = defineStore("MainStore", () => {
     const fetchTechStackIcons = async () => {
         try {
             const response = await axios.get(`https://9837b02b6a10eb76.mokky.dev/tech-stack-icons`);
-            techStackIcons.push(...response.data);
+            techStackIcons.splice(0, techStackIcons.length, ...response.data);
         } catch (error) {
             console.error("Error fetching tech stack icons:", error);
         }
@@ -30,7 +30,7 @@ export const useMainStore = defineStore("MainStore", () => {
     const fetchContacts = async () => {
         try {
             const response = await axios.get(`https://9837b02b6a10eb76.mokky.dev/contacts`);
-            contacts.push(...response.data);
+            contacts.splice(0, contacts.length, ...response.data);
         } catch (error) {
             console.error("Error fetching contacts:", error);
         }
@@ -39,7 +39,7 @@ export const useMainStore = defineStore("MainStore", () => {
     const fetchSocialMediaIcons = async () => {
         try {
             const response = await axios.get(`https://9837b02b6a10eb76.mokky.dev/social-media-icons`);
-            socialMediaIcons.push(...response.data);
+            socialMediaIcons.splice(0, socialMediaIcons.length, ...response.data);
         } catch (error) {
             console.error("Error fetching social media icons:", error);
         }
